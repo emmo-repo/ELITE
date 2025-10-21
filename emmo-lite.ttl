@@ -152,6 +152,8 @@ DatatypeProperty"""@en ;
 :hasDescription rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :isRepresentedBy ;
                 owl:inverseOf :isDescriptionOf ;
+                rdfs:domain :Referent ;
+                rdfs:range :Sign ;
                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
 
 
@@ -209,6 +211,7 @@ DatatypeProperty"""@en ;
 :hasProperty rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf :isRepresentedBy ;
              owl:inverseOf :isPropertyOf ;
+             rdfs:domain :Referent ;
              rdfs:range :Property ;
              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
 
@@ -350,6 +353,8 @@ DatatypeProperty"""@en ;
 ###  https://w3id.org/emmo/emmo-for-humans#isDescriptionOf
 :isDescriptionOf rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :standsFor ;
+                 rdfs:domain :Sign ;
+                 rdfs:range :Referent ;
                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
 
 
@@ -380,7 +385,9 @@ DatatypeProperty"""@en ;
 
 ###  https://w3id.org/emmo/emmo-for-humans#isInterpreterFor
 :isInterpreterFor rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :semioticOvercrossedBy .
+                  rdfs:subPropertyOf :semioticOvercrossedBy ;
+                  rdfs:domain :Interpreter ;
+                  rdfs:range :Semiosis .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isJoinedBy
@@ -455,12 +462,15 @@ DatatypeProperty"""@en ;
 :isPropertyOf rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf :standsFor ;
               rdfs:domain :Property ;
+              rdfs:range :Referent ;
               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isReferentFor
 :isReferentFor rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :semioticOvercrossedBy .
+               rdfs:subPropertyOf :semioticOvercrossedBy ;
+               rdfs:domain :Referent ;
+               rdfs:range :Semiosis .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isRepresentedBy
@@ -481,7 +491,9 @@ DatatypeProperty"""@en ;
 
 ###  https://w3id.org/emmo/emmo-for-humans#isSignFor
 :isSignFor rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :semioticOvercrossedBy .
+           rdfs:subPropertyOf :semioticOvercrossedBy ;
+           rdfs:domain :Sign ;
+           rdfs:range :Semiosis .
 
 
 ###  https://w3id.org/emmo/emmo-for-humans#isStageOf
