@@ -1,22 +1,23 @@
-@prefix : <https://w3id.org/emmo/emmo-for-humans#> .
+@prefix : <https://w3id.org/emmo/elite#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix hume: <https://w3id.org/emmo/hume#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://w3id.org/emmo/emmo-for-humans#> .
+@base <https://w3id.org/emmo/elite#> .
 
-<https://w3id.org/emmo/emmo-lite> rdf:type owl:Ontology ;
-                                   owl:versionIRI <https://w3id.org/emmo/emmo-lite/0.0.5> ;
-                                   <http://purl.org/dc/terms/abstract> "A collection of all the EMMO reference level ontology modules"@en ,
-                                                                       """A lightweight version of the EMMO, exposing the most common classes and relations for practical use in the development of application ontologies, using human-readable IRIs.
+<https://w3id.org/emmo/elite> rdf:type owl:Ontology ;
+                               owl:versionIRI <https://w3id.org/emmo/elite/0.0.6> ;
+                               <http://purl.org/dc/terms/abstract> "A collection of all the EMMO reference level ontology modules"@en ,
+                                                                   """A lightweight version of the EMMO, exposing the most common classes and relations for practical use in the development of application ontologies, using human-readable IRIs.
 EMMO-LITE expressivity is limited to RDFS+ for increased portability.
 Each EMMO-LITE ontology entity provides a reference to the EMMO entity using skos:exactMatch for mapping purposes."""@en ;
-                                   <http://purl.org/dc/terms/creator> "Emanuele Ghedini"@en ;
-                                   <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
-                                   <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
-                                   <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
-                                   rdfs:comment """EMMO-LITE is a subset of classes, properties and axioms of EMMO for Humans.
+                               <http://purl.org/dc/terms/creator> "Emanuele Ghedini"@en ;
+                               <http://purl.org/dc/terms/license> "https://creativecommons.org/licenses/by/4.0/legalcode" ;
+                               <http://purl.org/dc/terms/publisher> <https://emmc.eu> ;
+                               <http://purl.org/dc/terms/title> "EMMO-LITE"@en ;
+                               rdfs:comment """EMMO-LITE is a subset of classes, properties and axioms of EMMO for Humans.
 
 EMMO-LITE is designed for RDFS+ reasoning, using the following constructs:
 rdfs:subClassOf
@@ -37,7 +38,7 @@ FunctionalProperty
 InverseFunctionalProperty
 ObjectProperty
 DatatypeProperty"""@en ;
-                                   owl:versionInfo "0.0.5"@en .
+                               owl:versionInfo "0.0.5"@en .
 
 #################################################################
 #    Annotation properties
@@ -79,832 +80,832 @@ DatatypeProperty"""@en ;
 #    Object Properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-for-humans#affects
-:affects rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :properOverlaps ;
-         owl:inverseOf :isAffectedBy ;
-         rdf:type owl:AsymmetricProperty ,
-                  owl:IrreflexiveProperty ;
-         rdfs:domain :Process ;
-         rdfs:range :Object .
+###  https://w3id.org/emmo/hume#affects
+hume:affects rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf hume:properOverlaps ;
+             owl:inverseOf hume:isAffectedBy ;
+             rdf:type owl:AsymmetricProperty ,
+                      owl:IrreflexiveProperty ;
+             rdfs:domain hume:Process ;
+             rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#coexistsWith
-:coexistsWith rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :isCauseOf ,
-                                 :isCausedBy ;
-              rdf:type owl:SymmetricProperty ;
-              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_54d0d0f4_d9fa_4179_a9b5_4110c49dafff> .
+###  https://w3id.org/emmo/hume#coexistsWith
+hume:coexistsWith rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:isCauseOf ,
+                                     hume:isCausedBy ;
+                  rdf:type owl:SymmetricProperty ;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_54d0d0f4_d9fa_4179_a9b5_4110c49dafff> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#contributesTo
-:contributesTo rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :properOverlaps ;
-               owl:inverseOf :isContributedBy ;
+###  https://w3id.org/emmo/hume#contributesTo
+hume:contributesTo rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:properOverlaps ;
+                   owl:inverseOf hume:isContributedBy ;
+                   rdf:type owl:AsymmetricProperty ,
+                            owl:IrreflexiveProperty ;
+                   rdfs:domain hume:Process ;
+                   rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#hasBehaviour
+hume:hasBehaviour rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:hasProperPart ;
+                  owl:inverseOf hume:isBehaviourOf ;
+                  rdfs:domain hume:Object ;
+                  rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#hasComponent
+hume:hasComponent rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:hasConstituent ;
+                  owl:inverseOf hume:isComponentOf ;
+                  rdfs:domain hume:System ;
+                  rdfs:range hume:Component ;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
+
+
+###  https://w3id.org/emmo/hume#hasConstituent
+hume:hasConstituent rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:hasProperPart ;
+                    owl:inverseOf hume:isConstituentOf ;
+                    rdfs:domain hume:Object ;
+                    rdfs:range hume:Object .
+
+
+###  https://w3id.org/emmo/hume#hasConstitutiveProcess
+hume:hasConstitutiveProcess rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf hume:hasProperPart ;
+                            owl:inverseOf hume:isConstitutiveProcessOf ;
+                            rdfs:domain hume:Object ;
+                            rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#hasDatum
+hume:hasDatum rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:hasPart ;
+              owl:inverseOf hume:isDatumOf ;
+              rdfs:domain hume:DataSet ;
+              rdfs:range hume:Datum .
+
+
+###  https://w3id.org/emmo/hume#hasDescription
+hume:hasDescription rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:isRepresentedBy ;
+                    owl:inverseOf hume:isDescriptionOf ;
+                    rdfs:domain hume:Referent ;
+                    rdfs:range hume:Sign ;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
+
+
+###  https://w3id.org/emmo/hume#hasInput
+hume:hasInput rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:properOverlaps ;
+              owl:inverseOf hume:isInputOf ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain hume:Process .
+
+
+###  https://w3id.org/emmo/hume#hasInterpreter
+hume:hasInterpreter rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:semioticOvercross ;
+                    owl:inverseOf hume:isInterpreterFor ;
+                    rdfs:domain hume:Semiosis ;
+                    rdfs:range hume:Interpreter .
+
+
+###  https://w3id.org/emmo/hume#hasOutput
+hume:hasOutput rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:properOverlaps ;
+               owl:inverseOf hume:isOutputOf ;
                rdf:type owl:AsymmetricProperty ,
                         owl:IrreflexiveProperty ;
-               rdfs:domain :Process ;
-               rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasBehaviour
-:hasBehaviour rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasProperPart ;
-              owl:inverseOf :isBehaviourOf ;
-              rdfs:domain :Object ;
-              rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasComponent
-:hasComponent rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasConstituent ;
-              owl:inverseOf :isComponentOf ;
-              rdfs:domain :System ;
-              rdfs:range :Component ;
-              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3c7f239f_e833_4a2b_98a1_c88831770c1b> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasConstituent
-:hasConstituent rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasProperPart ;
-                owl:inverseOf :isConstituentOf ;
-                rdfs:domain :Object ;
-                rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasConstitutiveProcess
-:hasConstitutiveProcess rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :hasProperPart ;
-                        owl:inverseOf :isConstitutiveProcessOf ;
-                        rdfs:domain :Object ;
-                        rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasDatum
-:hasDatum rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasPart ;
-          owl:inverseOf :isDatumOf ;
-          rdfs:domain :DataSet ;
-          rdfs:range :Datum .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasDescription
-:hasDescription rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isRepresentedBy ;
-                owl:inverseOf :isDescriptionOf ;
-                rdfs:domain :Referent ;
-                rdfs:range :Sign ;
-                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c58c799e_cc6c_4310_a3f1_78da70705b2a> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasInput
-:hasInput rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :properOverlaps ;
-          owl:inverseOf :isInputOf ;
-          rdf:type owl:AsymmetricProperty ,
-                   owl:IrreflexiveProperty ;
-          rdfs:domain :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasInterpreter
-:hasInterpreter rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :semioticOvercross ;
-                owl:inverseOf :isInterpreterFor ;
-                rdfs:domain :Semiosis ;
-                rdfs:range :Interpreter .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasOutput
-:hasOutput rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :properOverlaps ;
-           owl:inverseOf :isOutputOf ;
-           rdf:type owl:AsymmetricProperty ,
-                    owl:IrreflexiveProperty ;
-           rdfs:domain :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasPart
-:hasPart rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :overlaps ;
-         owl:inverseOf :isPartOf ;
-         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_17e27c22_37e1_468c_9dd7_95e137f73e7f> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasParticipant
-:hasParticipant rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :hasProperPart ;
-                owl:inverseOf :isParticipantOf ;
-                rdfs:domain :Process ;
-                rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#hasProperPart
-:hasProperPart rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :hasPart ,
-                                  :overcrosses ;
-               owl:inverseOf :isProperPartOf ;
-               rdf:type owl:AsymmetricProperty ;
-               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
+               rdfs:domain hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasProperty
-:hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :isRepresentedBy ;
-             owl:inverseOf :isPropertyOf ;
-             rdfs:domain :Referent ;
-             rdfs:range :Property ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
+###  https://w3id.org/emmo/hume#hasPart
+hume:hasPart rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf hume:overlaps ;
+             owl:inverseOf hume:isPartOf ;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_17e27c22_37e1_468c_9dd7_95e137f73e7f> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasReferent
-:hasReferent rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :semioticOvercross ;
-             owl:inverseOf :isReferentFor ;
-             rdfs:domain :Semiosis ;
-             rdfs:range :Referent .
+###  https://w3id.org/emmo/hume#hasParticipant
+hume:hasParticipant rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:hasProperPart ;
+                    owl:inverseOf hume:isParticipantOf ;
+                    rdfs:domain hume:Process ;
+                    rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasSign
-:hasSign rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :semioticOvercross ;
-         owl:inverseOf :isSignFor ;
-         rdfs:domain :Semiosis ;
-         rdfs:range :Sign .
+###  https://w3id.org/emmo/hume#hasProperPart
+hume:hasProperPart rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:hasPart ,
+                                      hume:overcrosses ;
+                   owl:inverseOf hume:isProperPartOf ;
+                   rdf:type owl:AsymmetricProperty ;
+                   <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasStage
-:hasStage rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :hasProperPart ;
-          owl:inverseOf :isStageOf ;
-          rdfs:domain :Process ;
-          rdfs:range :Process .
+###  https://w3id.org/emmo/hume#hasProperty
+hume:hasProperty rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf hume:isRepresentedBy ;
+                 owl:inverseOf hume:isPropertyOf ;
+                 rdfs:domain hume:Referent ;
+                 rdfs:range hume:Property ;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e1097637_70d2_4895_973f_2396f04fa204> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasStatus
-:hasStatus rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :hasProperPart ;
-           owl:inverseOf :isStatusOf ;
-           rdfs:domain :Process ;
-           rdfs:range :Object .
+###  https://w3id.org/emmo/hume#hasReferent
+hume:hasReferent rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf hume:semioticOvercross ;
+                 owl:inverseOf hume:isReferentFor ;
+                 rdfs:domain hume:Semiosis ;
+                 rdfs:range hume:Referent .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasSubObject
-:hasSubObject rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :hasProperPart ;
-              owl:inverseOf :isSubObjectOf ;
-              rdfs:domain :Object ;
-              rdfs:range :Object .
+###  https://w3id.org/emmo/hume#hasSign
+hume:hasSign rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf hume:semioticOvercross ;
+             owl:inverseOf hume:isSignFor ;
+             rdfs:domain hume:Semiosis ;
+             rdfs:range hume:Sign .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#hasSubProcess
-:hasSubProcess rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :hasProperPart ;
-               owl:inverseOf :isSubProcessOf ;
-               rdfs:domain :Process ;
-               rdfs:range :Process .
+###  https://w3id.org/emmo/hume#hasStage
+hume:hasStage rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:hasProperPart ;
+              owl:inverseOf hume:isStageOf ;
+              rdfs:domain hume:Process ;
+              rdfs:range hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#interprets
-:interprets rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-            owl:inverseOf :isInterpretedBy ;
-            rdfs:domain :Interpreter ;
-            rdfs:range :Sign ;
-            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
+###  https://w3id.org/emmo/hume#hasStatus
+hume:hasStatus rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:hasProperPart ;
+               owl:inverseOf hume:isStatusOf ;
+               rdfs:domain hume:Process ;
+               rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isAffectedBy
-:isAffectedBy rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :properOverlaps ;
-              rdf:type owl:AsymmetricProperty ,
-                       owl:IrreflexiveProperty .
+###  https://w3id.org/emmo/hume#hasSubObject
+hume:hasSubObject rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:hasProperPart ;
+                  owl:inverseOf hume:isSubObjectOf ;
+                  rdfs:domain hume:Object ;
+                  rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isAfter
-:isAfter rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :isCausedBy ;
-         owl:inverseOf :isBefore ;
-         rdf:type owl:AsymmetricProperty ;
-         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2a28c0dd_89b1_47ac_b81f_fccc56f39617> .
+###  https://w3id.org/emmo/hume#hasSubProcess
+hume:hasSubProcess rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:hasProperPart ;
+                   owl:inverseOf hume:isSubProcessOf ;
+                   rdfs:domain hume:Process ;
+                   rdfs:range hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isBefore
-:isBefore rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :isCauseOf ;
-          rdf:type owl:AsymmetricProperty ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_ebc9e62c_5dc4_44db_9060_7923740bdf78> .
+###  https://w3id.org/emmo/hume#interprets
+hume:interprets rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+                owl:inverseOf hume:isInterpretedBy ;
+                rdfs:domain hume:Interpreter ;
+                rdfs:range hume:Sign ;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_cd9a3a58_dabc_4c46_9ea4_03ca000b2022> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isBehaviourOf
-:isBehaviourOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isProperPartOf ;
-               rdfs:domain :Process ;
-               rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isCauseOf
-:isCauseOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf owl:topObjectProperty ;
-           owl:inverseOf :isCausedBy ;
-           rdf:type owl:IrreflexiveProperty ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isCausedBy
-:isCausedBy rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdf:type owl:IrreflexiveProperty ;
-            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_6735d3ff_67f8_43b5_b5b0_240fbfab4517> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isComponentOf
-:isComponentOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isConstituentOf ;
-               rdfs:domain :Component ;
-               rdfs:range :System .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isConstituentOf
-:isConstituentOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isProperPartOf ;
-                 rdfs:domain :Object ;
-                 rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isConstitutiveProcessOf
-:isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf :isProperPartOf ;
-                         rdfs:domain :Process ;
-                         rdfs:range :Object .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isContributedBy
-:isContributedBy rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :properOverlaps ;
-                 rdf:type owl:AsymmetricProperty ,
-                          owl:IrreflexiveProperty .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isDatumOf
-:isDatumOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :isPartOf .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isDescriptionOf
-:isDescriptionOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :standsFor ;
-                 rdfs:domain :Sign ;
-                 rdfs:range :Referent ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isInputOf
-:isInputOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :properOverlaps ;
-           rdf:type owl:AsymmetricProperty ,
-                    owl:IrreflexiveProperty ;
-           rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isInterpretationAccordingTo
-:isInterpretationAccordingTo rdf:type owl:ObjectProperty ;
-                             rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                             owl:inverseOf :providesInterpretation ;
-                             rdfs:domain :Referent ;
-                             rdfs:range :Interpreter ;
-                             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0ed18c6b_8289_44fd_a7d7_c15a8786cdc0> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isInterpretedBy
-:isInterpretedBy rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                 rdfs:domain :Sign ;
-                 rdfs:range :Interpreter ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isInterpreterFor
-:isInterpreterFor rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :semioticOvercrossedBy ;
-                  rdfs:domain :Interpreter ;
-                  rdfs:range :Semiosis .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isJoinedBy
-:isJoinedBy rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :properOverlaps ;
-            owl:inverseOf :joins ;
-            rdf:type owl:AsymmetricProperty ,
-                     owl:IrreflexiveProperty .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isLeftBy
-:isLeftBy rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :properOverlaps ;
-          owl:inverseOf :leaves ;
-          rdf:type owl:AsymmetricProperty ,
-                   owl:IrreflexiveProperty .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isOutputOf
-:isOutputOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :properOverlaps ;
-            rdf:type owl:AsymmetricProperty ,
-                     owl:IrreflexiveProperty ;
-            rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isOvercrossedBy
-:isOvercrossedBy rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :overlaps ;
-                 owl:inverseOf :overcrosses ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e4f66254_7312_4de5_a86a_6e0808baaaab> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isPartOf
-:isPartOf rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :overlaps ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a8bd7094_6b40_47af_b1f4_a69d81a3afbd> .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isPartakenBy
-:isPartakenBy rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :properOverlaps ;
-              owl:inverseOf :partakesIn ;
-              rdf:type owl:AsymmetricProperty ,
-                       owl:IrreflexiveProperty .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isParticipantOf
-:isParticipantOf rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isProperPartOf ;
-                 rdfs:domain :Object ;
-                 rdfs:range :Process .
-
-
-###  https://w3id.org/emmo/emmo-for-humans#isParticipatedBy
-:isParticipatedBy rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf :properOverlaps ;
-                  owl:inverseOf :participatesTo ;
+###  https://w3id.org/emmo/hume#isAffectedBy
+hume:isAffectedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:properOverlaps ;
                   rdf:type owl:AsymmetricProperty ,
                            owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isProperPartOf
-:isProperPartOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isOvercrossedBy ,
-                                   :isPartOf ;
-                rdf:type owl:AsymmetricProperty ;
-                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_559ab98c_1c7d_4794_996c_8c1d8d56381c> .
+###  https://w3id.org/emmo/hume#isAfter
+hume:isAfter rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf hume:isCausedBy ;
+             owl:inverseOf hume:isBefore ;
+             rdf:type owl:AsymmetricProperty ;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2a28c0dd_89b1_47ac_b81f_fccc56f39617> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isPropertyOf
-:isPropertyOf rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :standsFor ;
-              rdfs:domain :Property ;
-              rdfs:range :Referent ;
-              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
+###  https://w3id.org/emmo/hume#isBefore
+hume:isBefore rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:isCauseOf ;
+              rdf:type owl:AsymmetricProperty ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_ebc9e62c_5dc4_44db_9060_7923740bdf78> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isReferentFor
-:isReferentFor rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :semioticOvercrossedBy ;
-               rdfs:domain :Referent ;
-               rdfs:range :Semiosis .
+###  https://w3id.org/emmo/hume#isBehaviourOf
+hume:isBehaviourOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:isProperPartOf ;
+                   rdfs:domain hume:Process ;
+                   rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isRepresentedBy
-:isRepresentedBy rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                 owl:inverseOf :standsFor ;
-                 rdfs:domain :Referent ;
-                 rdfs:range :Sign ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_60577dea_9019_4537_ac41_80b0fb563d41> .
+###  https://w3id.org/emmo/hume#isCauseOf
+hume:isCauseOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf hume:isCausedBy ;
+               rdf:type owl:IrreflexiveProperty ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isSemioticallyRelatedTo
-:isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
-                         rdfs:subPropertyOf owl:topObjectProperty ;
-                         rdf:type owl:SymmetricProperty ;
-                         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
+###  https://w3id.org/emmo/hume#isCausedBy
+hume:isCausedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:IrreflexiveProperty ;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_6735d3ff_67f8_43b5_b5b0_240fbfab4517> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isSignFor
-:isSignFor rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :semioticOvercrossedBy ;
-           rdfs:domain :Sign ;
-           rdfs:range :Semiosis .
+###  https://w3id.org/emmo/hume#isComponentOf
+hume:isComponentOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:isConstituentOf ;
+                   rdfs:domain hume:Component ;
+                   rdfs:range hume:System .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isStageOf
-:isStageOf rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :isProperPartOf ;
-           rdfs:domain :Process ;
-           rdfs:range :Process .
+###  https://w3id.org/emmo/hume#isConstituentOf
+hume:isConstituentOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:isProperPartOf ;
+                     rdfs:domain hume:Object ;
+                     rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isStatusOf
-:isStatusOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :isProperPartOf ;
-            rdfs:domain :Object ;
-            rdfs:range :Process .
+###  https://w3id.org/emmo/hume#isConstitutiveProcessOf
+hume:isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf hume:isProperPartOf ;
+                             rdfs:domain hume:Process ;
+                             rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isSubObjectOf
-:isSubObjectOf rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :isProperPartOf ;
-               rdfs:domain :Object ;
-               rdfs:range :Object .
+###  https://w3id.org/emmo/hume#isContributedBy
+hume:isContributedBy rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:properOverlaps ;
+                     rdf:type owl:AsymmetricProperty ,
+                              owl:IrreflexiveProperty .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#isSubProcessOf
-:isSubProcessOf rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isProperPartOf ;
-                rdfs:domain :Process ;
-                rdfs:range :Process .
+###  https://w3id.org/emmo/hume#isDatumOf
+hume:isDatumOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:isPartOf .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#joins
-:joins rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf :properOverlaps ;
-       rdf:type owl:AsymmetricProperty ,
-                owl:IrreflexiveProperty ;
-       rdfs:range :Object .
+###  https://w3id.org/emmo/hume#isDescriptionOf
+hume:isDescriptionOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:standsFor ;
+                     rdfs:domain hume:Sign ;
+                     rdfs:range hume:Referent ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f702bad4_fc77_41f0_a26d_79f6444fd4f3> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#leaves
-:leaves rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf :properOverlaps ;
-        rdf:type owl:AsymmetricProperty ,
-                 owl:IrreflexiveProperty ;
-        rdfs:range :Object .
+###  https://w3id.org/emmo/hume#isInputOf
+hume:isInputOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:properOverlaps ;
+               rdf:type owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty ;
+               rdfs:range hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#overcrosses
-:overcrosses rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :overlaps ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9cb984ca_48ad_4864_b09e_50d3fff19420> .
+###  https://w3id.org/emmo/hume#isInterpretationAccordingTo
+hume:isInterpretationAccordingTo rdf:type owl:ObjectProperty ;
+                                 rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+                                 owl:inverseOf hume:providesInterpretation ;
+                                 rdfs:domain hume:Referent ;
+                                 rdfs:range hume:Interpreter ;
+                                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0ed18c6b_8289_44fd_a7d7_c15a8786cdc0> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#overlaps
-:overlaps rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty ;
-          rdf:type owl:SymmetricProperty ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d893d373_b579_4867_841e_1c2b31a8d2c6> .
+###  https://w3id.org/emmo/hume#isInterpretedBy
+hume:isInterpretedBy rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+                     rdfs:domain hume:Sign ;
+                     rdfs:range hume:Interpreter ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4832e353_6a2d_4deb_9a5b_96989afaff2d> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#partakesIn
-:partakesIn rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf :properOverlaps ;
-            rdf:type owl:AsymmetricProperty ,
-                     owl:IrreflexiveProperty ;
-            rdfs:domain :Object ;
-            rdfs:range :Object .
+###  https://w3id.org/emmo/hume#isInterpreterFor
+hume:isInterpreterFor rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf hume:semioticOvercrossedBy ;
+                      rdfs:domain hume:Interpreter ;
+                      rdfs:range hume:Semiosis .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#participatesTo
-:participatesTo rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :properOverlaps ;
+###  https://w3id.org/emmo/hume#isJoinedBy
+hume:isJoinedBy rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf hume:properOverlaps ;
+                owl:inverseOf hume:joins ;
+                rdf:type owl:AsymmetricProperty ,
+                         owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/hume#isLeftBy
+hume:isLeftBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:properOverlaps ;
+              owl:inverseOf hume:leaves ;
+              rdf:type owl:AsymmetricProperty ,
+                       owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/hume#isOutputOf
+hume:isOutputOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf hume:properOverlaps ;
                 rdf:type owl:AsymmetricProperty ,
                          owl:IrreflexiveProperty ;
-                rdfs:domain :Object ;
-                rdfs:range :Process .
+                rdfs:range hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#properOverlaps
-:properOverlaps rdf:type owl:ObjectProperty ;
-                rdfs:subPropertyOf :isOvercrossedBy ,
-                                   :overcrosses ;
-                rdf:type owl:SymmetricProperty ,
+###  https://w3id.org/emmo/hume#isOvercrossedBy
+hume:isOvercrossedBy rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:overlaps ;
+                     owl:inverseOf hume:overcrosses ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e4f66254_7312_4de5_a86a_6e0808baaaab> .
+
+
+###  https://w3id.org/emmo/hume#isPartOf
+hume:isPartOf rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf hume:overlaps ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a8bd7094_6b40_47af_b1f4_a69d81a3afbd> .
+
+
+###  https://w3id.org/emmo/hume#isPartakenBy
+hume:isPartakenBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:properOverlaps ;
+                  owl:inverseOf hume:partakesIn ;
+                  rdf:type owl:AsymmetricProperty ,
+                           owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/hume#isParticipantOf
+hume:isParticipantOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:isProperPartOf ;
+                     rdfs:domain hume:Object ;
+                     rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#isParticipatedBy
+hume:isParticipatedBy rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf hume:properOverlaps ;
+                      owl:inverseOf hume:participatesTo ;
+                      rdf:type owl:AsymmetricProperty ,
+                               owl:IrreflexiveProperty .
+
+
+###  https://w3id.org/emmo/hume#isProperPartOf
+hume:isProperPartOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:isOvercrossedBy ,
+                                       hume:isPartOf ;
+                    rdf:type owl:AsymmetricProperty ;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_559ab98c_1c7d_4794_996c_8c1d8d56381c> .
+
+
+###  https://w3id.org/emmo/hume#isPropertyOf
+hume:isPropertyOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf hume:standsFor ;
+                  rdfs:domain hume:Property ;
+                  rdfs:range hume:Referent ;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3ddad94_ef7e_4b97_8329_9e7c788dd94d> .
+
+
+###  https://w3id.org/emmo/hume#isReferentFor
+hume:isReferentFor rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:semioticOvercrossedBy ;
+                   rdfs:domain hume:Referent ;
+                   rdfs:range hume:Semiosis .
+
+
+###  https://w3id.org/emmo/hume#isRepresentedBy
+hume:isRepresentedBy rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+                     owl:inverseOf hume:standsFor ;
+                     rdfs:domain hume:Referent ;
+                     rdfs:range hume:Sign ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_60577dea_9019_4537_ac41_80b0fb563d41> .
+
+
+###  https://w3id.org/emmo/hume#isSemioticallyRelatedTo
+hume:isSemioticallyRelatedTo rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdf:type owl:SymmetricProperty ;
+                             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2337e25c_3c60_43fc_a8f9_b11a3f974291> .
+
+
+###  https://w3id.org/emmo/hume#isSignFor
+hume:isSignFor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:semioticOvercrossedBy ;
+               rdfs:domain hume:Sign ;
+               rdfs:range hume:Semiosis .
+
+
+###  https://w3id.org/emmo/hume#isStageOf
+hume:isStageOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:isProperPartOf ;
+               rdfs:domain hume:Process ;
+               rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#isStatusOf
+hume:isStatusOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf hume:isProperPartOf ;
+                rdfs:domain hume:Object ;
+                rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#isSubObjectOf
+hume:isSubObjectOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf hume:isProperPartOf ;
+                   rdfs:domain hume:Object ;
+                   rdfs:range hume:Object .
+
+
+###  https://w3id.org/emmo/hume#isSubProcessOf
+hume:isSubProcessOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:isProperPartOf ;
+                    rdfs:domain hume:Process ;
+                    rdfs:range hume:Process .
+
+
+###  https://w3id.org/emmo/hume#joins
+hume:joins rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf hume:properOverlaps ;
+           rdf:type owl:AsymmetricProperty ,
+                    owl:IrreflexiveProperty ;
+           rdfs:range hume:Object .
+
+
+###  https://w3id.org/emmo/hume#leaves
+hume:leaves rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf hume:properOverlaps ;
+            rdf:type owl:AsymmetricProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:range hume:Object .
+
+
+###  https://w3id.org/emmo/hume#overcrosses
+hume:overcrosses rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf hume:overlaps ;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9cb984ca_48ad_4864_b09e_50d3fff19420> .
+
+
+###  https://w3id.org/emmo/hume#overlaps
+hume:overlaps rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:SymmetricProperty ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d893d373_b579_4867_841e_1c2b31a8d2c6> .
+
+
+###  https://w3id.org/emmo/hume#partakesIn
+hume:partakesIn rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf hume:properOverlaps ;
+                rdf:type owl:AsymmetricProperty ,
                          owl:IrreflexiveProperty ;
-                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
+                rdfs:domain hume:Object ;
+                rdfs:range hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#providesInterpretation
-:providesInterpretation rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-                        rdfs:domain :Interpreter ;
-                        rdfs:range :Referent ;
-                        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f2fc1ce9_cc3b_4eb5_a112_3c85d1b1374a> .
+###  https://w3id.org/emmo/hume#participatesTo
+hume:participatesTo rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:properOverlaps ;
+                    rdf:type owl:AsymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    rdfs:domain hume:Object ;
+                    rdfs:range hume:Process .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#semioticOvercross
-:semioticOvercross rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :isSemioticallyRelatedTo ,
-                                      :overcrosses ;
-                   owl:inverseOf :semioticOvercrossedBy .
+###  https://w3id.org/emmo/hume#properOverlaps
+hume:properOverlaps rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf hume:isOvercrossedBy ,
+                                       hume:overcrosses ;
+                    rdf:type owl:SymmetricProperty ,
+                             owl:IrreflexiveProperty ;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#semioticOvercrossedBy
-:semioticOvercrossedBy rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf :isOvercrossedBy ,
-                                          :isSemioticallyRelatedTo .
+###  https://w3id.org/emmo/hume#providesInterpretation
+hume:providesInterpretation rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+                            rdfs:domain hume:Interpreter ;
+                            rdfs:range hume:Referent ;
+                            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f2fc1ce9_cc3b_4eb5_a112_3c85d1b1374a> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#standsFor
-:standsFor rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :isSemioticallyRelatedTo ;
-           rdfs:domain :Sign ;
-           rdfs:range :Referent ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_82a96de2_41aa_4bf7_b7ac_de1373d50160> .
+###  https://w3id.org/emmo/hume#semioticOvercross
+hume:semioticOvercross rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf hume:isSemioticallyRelatedTo ,
+                                          hume:overcrosses ;
+                       owl:inverseOf hume:semioticOvercrossedBy .
+
+
+###  https://w3id.org/emmo/hume#semioticOvercrossedBy
+hume:semioticOvercrossedBy rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf hume:isOvercrossedBy ,
+                                              hume:isSemioticallyRelatedTo .
+
+
+###  https://w3id.org/emmo/hume#standsFor
+hume:standsFor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf hume:isSemioticallyRelatedTo ;
+               rdfs:domain hume:Sign ;
+               rdfs:range hume:Referent ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_82a96de2_41aa_4bf7_b7ac_de1373d50160> .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://w3id.org/emmo/emmo-for-humans#dataValue
-:dataValue rdf:type owl:DatatypeProperty ;
-           rdfs:domain :Data ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
+###  https://w3id.org/emmo/hume#dataValue
+hume:dataValue rdf:type owl:DatatypeProperty ;
+               rdfs:domain hume:Data ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b6292331_94af_4f00_976b_ea55960c2f1c> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#referenceUnit
-:referenceUnit rdf:type owl:DatatypeProperty ;
-               rdfs:subPropertyOf owl:topDataProperty ;
-               rdfs:comment """A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints.
-Units must be written according to  section 5.2 SI Brochure rules: https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf/fcf090b2-04e6-88cc-1149-c3e029ad8232"""@en ;
-               <http://www.w3.org/2004/02/skos/core#example> "kg/m s" .
+###  https://w3id.org/emmo/hume#referenceUnit
+hume:referenceUnit rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:comment """A simple alternative to more sofisticated ontological apporaches to measurement units, where a user can provide a string with the reference unit for a particular physical property data individual without strict syntactic constraints.
+Units must be written according to section 5.2 SI Brochure rules: https://www.bipm.org/documents/20126/41483022/SI-Brochure-9.pdf/fcf090b2-04e6-88cc-1149-c3e029ad8232"""@en ;
+                   <http://www.w3.org/2004/02/skos/core#example> "kg/m s" .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  https://w3id.org/emmo/emmo-for-humans#Agency
-:Agency rdf:type owl:Class ;
-        rdfs:subClassOf :Whole ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a49c2441_1e54_43f0_a1cf_2f553a23ac34> .
+###  https://w3id.org/emmo/hume#Agency
+hume:Agency rdf:type owl:Class ;
+            rdfs:subClassOf hume:Whole ;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a49c2441_1e54_43f0_a1cf_2f553a23ac34> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Agent
-:Agent rdf:type owl:Class ;
-       rdfs:subClassOf :Object ,
-                       :Role ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
+###  https://w3id.org/emmo/hume#Agent
+hume:Agent rdf:type owl:Class ;
+           rdfs:subClassOf hume:Object ,
+                           hume:Role ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2480b72b_db8d_460f_9a5f_c2912f979046> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#AnalogData
-:AnalogData rdf:type owl:Class ;
-            rdfs:subClassOf :DataByDiscretness ;
-            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0d1c0018_42e2_4506_bc3d_f53c117c1ad3> .
+###  https://w3id.org/emmo/hume#AnalogData
+hume:AnalogData rdf:type owl:Class ;
+                rdfs:subClassOf hume:DataByDiscretness ;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0d1c0018_42e2_4506_bc3d_f53c117c1ad3> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#ArrayData
-:ArrayData rdf:type owl:Class ;
-           rdfs:subClassOf :DiscreteData ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
+###  https://w3id.org/emmo/hume#ArrayData
+hume:ArrayData rdf:type owl:Class ;
+               rdfs:subClassOf hume:DiscreteData ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9e49caad_b29e_4cf1_9be4_80419fd1e45c> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Characterisation
-:Characterisation rdf:type owl:Class ;
-                  rdfs:subClassOf :Measurement .
+###  https://w3id.org/emmo/hume#Characterisation
+hume:Characterisation rdf:type owl:Class ;
+                      rdfs:subClassOf hume:Measurement .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Component
-:Component rdf:type owl:Class ;
-           rdfs:subClassOf :Object ,
-                           :Role ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :isConstituentOf ;
-                             owl:someValuesFrom :System
-                           ] ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
+###  https://w3id.org/emmo/hume#Component
+hume:Component rdf:type owl:Class ;
+               rdfs:subClassOf hume:Object ,
+                               hume:Role ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty hume:isConstituentOf ;
+                                 owl:someValuesFrom hume:System
+                               ] ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#CondensedMatter
-:CondensedMatter rdf:type owl:Class ;
-                 rdfs:subClassOf :StateOfMatter ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
+###  https://w3id.org/emmo/hume#CondensedMatter
+hume:CondensedMatter rdf:type owl:Class ;
+                     rdfs:subClassOf hume:StateOfMatter ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_220b7201_d277_4dca_bf6a_5a5e2c4062dd> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#ContinuumSubstance
-:ContinuumSubstance rdf:type owl:Class ;
-                    rdfs:subClassOf :Substance ;
-                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8b0923ab_b500_477b_9ce9_8b3a3e4dc4f2> .
+###  https://w3id.org/emmo/hume#ContinuumSubstance
+hume:ContinuumSubstance rdf:type owl:Class ;
+                        rdfs:subClassOf hume:Substance ;
+                        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8b0923ab_b500_477b_9ce9_8b3a3e4dc4f2> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Data
-:Data rdf:type owl:Class ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3e7add3d_e6ed_489a_a796_8e31fef9b490> .
+###  https://w3id.org/emmo/hume#Data
+hume:Data rdf:type owl:Class ;
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_3e7add3d_e6ed_489a_a796_8e31fef9b490> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#DataByDiscretness
-:DataByDiscretness rdf:type owl:Class ;
-                   rdfs:subClassOf :Data ;
-                   <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_c66ad523_3937_485e_91bb_ad488ddb373f> .
+###  https://w3id.org/emmo/hume#DataByDiscretness
+hume:DataByDiscretness rdf:type owl:Class ;
+                       rdfs:subClassOf hume:Data ;
+                       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_c66ad523_3937_485e_91bb_ad488ddb373f> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#DataByStructure
-:DataByStructure rdf:type owl:Class ;
-                 rdfs:subClassOf :Data ;
-                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_1a40459e_10d8_49b3_bb8c_c3595fb1d0bb> .
+###  https://w3id.org/emmo/hume#DataByStructure
+hume:DataByStructure rdf:type owl:Class ;
+                     rdfs:subClassOf hume:Data ;
+                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org.org/emmo#EMMO_1a40459e_10d8_49b3_bb8c_c3595fb1d0bb> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#DataSet
-:DataSet rdf:type owl:Class ;
-         rdfs:subClassOf :DataByStructure ;
-         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_194e367c_9783_4bf5_96d0_9ad597d48d9a> .
+###  https://w3id.org/emmo/hume#DataSet
+hume:DataSet rdf:type owl:Class ;
+             rdfs:subClassOf hume:DataByStructure ;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_194e367c_9783_4bf5_96d0_9ad597d48d9a> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Datum
-:Datum rdf:type owl:Class ;
-       rdfs:subClassOf :DataByStructure ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_50d6236a_7667_4883_8ae1_9bb5d190423a> .
+###  https://w3id.org/emmo/hume#Datum
+hume:Datum rdf:type owl:Class ;
+           rdfs:subClassOf hume:DataByStructure ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_50d6236a_7667_4883_8ae1_9bb5d190423a> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Description
-:Description rdf:type owl:Class ;
-             rdfs:subClassOf :Sign ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_35d4c439_fcb6_4399_a855_a89a207b41e9> .
+###  https://w3id.org/emmo/hume#Description
+hume:Description rdf:type owl:Class ;
+                 rdfs:subClassOf hume:Sign ;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_35d4c439_fcb6_4399_a855_a89a207b41e9> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Device
-:Device rdf:type owl:Class ;
-        rdfs:subClassOf :Object .
+###  https://w3id.org/emmo/hume#Device
+hume:Device rdf:type owl:Class ;
+            rdfs:subClassOf hume:Object .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#DiscreteData
-:DiscreteData rdf:type owl:Class ;
-              rdfs:subClassOf :DataByDiscretness ;
-              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_be8592a7_68d1_4a06_ad23_82f2b56ef926> .
+###  https://w3id.org/emmo/hume#DiscreteData
+hume:DiscreteData rdf:type owl:Class ;
+                  rdfs:subClassOf hume:DataByDiscretness ;
+                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_be8592a7_68d1_4a06_ad23_82f2b56ef926> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Fluid
-:Fluid rdf:type owl:Class ;
-       rdfs:subClassOf :StateOfMatter ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_87ac88ff_8379_4f5a_8c7b_424a8fff1ee8> .
+###  https://w3id.org/emmo/hume#Fluid
+hume:Fluid rdf:type owl:Class ;
+           rdfs:subClassOf hume:StateOfMatter ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_87ac88ff_8379_4f5a_8c7b_424a8fff1ee8> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Gas
-:Gas rdf:type owl:Class ;
-     rdfs:subClassOf :Fluid ;
-     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_04f2a2d5_e799_4692_a654_420e76f5acc1> .
+###  https://w3id.org/emmo/hume#Gas
+hume:Gas rdf:type owl:Class ;
+         rdfs:subClassOf hume:Fluid ;
+         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_04f2a2d5_e799_4692_a654_420e76f5acc1> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Holistic
-:Holistic rdf:type owl:Class ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0277f24a_ea7f_4917_81b7_fb0406c8fc62> .
+###  https://w3id.org/emmo/hume#Holistic
+hume:Holistic rdf:type owl:Class ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_0277f24a_ea7f_4917_81b7_fb0406c8fc62> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Interpreter
-:Interpreter rdf:type owl:Class ;
-             rdfs:subClassOf :Semiotics .
+###  https://w3id.org/emmo/hume#Interpreter
+hume:Interpreter rdf:type owl:Class ;
+                 rdfs:subClassOf hume:Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#JSONData
-:JSONData rdf:type owl:Class ;
-          rdfs:subClassOf :DiscreteData .
+###  https://w3id.org/emmo/hume#JSONData
+hume:JSONData rdf:type owl:Class ;
+              rdfs:subClassOf hume:DiscreteData .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Liquid
-:Liquid rdf:type owl:Class ;
-        rdfs:subClassOf :CondensedMatter ,
-                        :Fluid ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_7509da43_56b1_4d7f_887a_65d1663df4ba> .
+###  https://w3id.org/emmo/hume#Liquid
+hume:Liquid rdf:type owl:Class ;
+            rdfs:subClassOf hume:CondensedMatter ,
+                            hume:Fluid ;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_7509da43_56b1_4d7f_887a_65d1663df4ba> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Material
-:Material rdf:type owl:Class ;
-          rdfs:subClassOf :Substance ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> .
+###  https://w3id.org/emmo/hume#Material
+hume:Material rdf:type owl:Class ;
+              rdfs:subClassOf hume:Substance ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4207e895_8b83_4318_996a_72cfb32acd94> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Measurement
-:Measurement rdf:type owl:Class ;
-             rdfs:subClassOf :Semiosis .
+###  https://w3id.org/emmo/hume#Measurement
+hume:Measurement rdf:type owl:Class ;
+                 rdfs:subClassOf hume:Semiosis .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Measurer
-:Measurer rdf:type owl:Class ;
-          rdfs:subClassOf :Interpreter .
+###  https://w3id.org/emmo/hume#Measurer
+hume:Measurer rdf:type owl:Class ;
+              rdfs:subClassOf hume:Interpreter .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#MesoscopicSubstance
-:MesoscopicSubstance rdf:type owl:Class ;
-                     rdfs:subClassOf :Substance ;
-                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_660a4964_0333_4663_bc66_e93ef59b0679> .
+###  https://w3id.org/emmo/hume#MesoscopicSubstance
+hume:MesoscopicSubstance rdf:type owl:Class ;
+                         rdfs:subClassOf hume:Substance ;
+                         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_660a4964_0333_4663_bc66_e93ef59b0679> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Object
-:Object rdf:type owl:Class ;
-        rdfs:subClassOf :Persistence ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_90ae56e4_d197_49b6_be1a_0049e4756606> .
+###  https://w3id.org/emmo/hume#Object
+hume:Object rdf:type owl:Class ;
+            rdfs:subClassOf hume:Persistence ;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_90ae56e4_d197_49b6_be1a_0049e4756606> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Persistence
-:Persistence rdf:type owl:Class ;
-             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e04884d9_eda6_487e_93d5_7722d7eda96b> .
+###  https://w3id.org/emmo/hume#Persistence
+hume:Persistence rdf:type owl:Class ;
+                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_e04884d9_eda6_487e_93d5_7722d7eda96b> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#PhysicalEntity
-:PhysicalEntity rdf:type owl:Class ;
-                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c5ddfdba_c074_4aa4_ad6b_1ac4942d300d> .
+###  https://w3id.org/emmo/hume#PhysicalEntity
+hume:PhysicalEntity rdf:type owl:Class ;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_c5ddfdba_c074_4aa4_ad6b_1ac4942d300d> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#PhysicalObject
-:PhysicalObject rdf:type owl:Class ;
-                rdfs:subClassOf :PhysicalEntity ;
-                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_38b579de_4331_40e0_803d_09efa298e726> .
+###  https://w3id.org/emmo/hume#PhysicalObject
+hume:PhysicalObject rdf:type owl:Class ;
+                    rdfs:subClassOf hume:PhysicalEntity ;
+                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_38b579de_4331_40e0_803d_09efa298e726> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#PhysicalParticle
-:PhysicalParticle rdf:type owl:Class ;
-                  rdfs:subClassOf :PhysicalObject ;
-                  <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a15cea10_9946_4d2b_95c5_cfc333fd2abb> .
+###  https://w3id.org/emmo/hume#PhysicalParticle
+hume:PhysicalParticle rdf:type owl:Class ;
+                      rdfs:subClassOf hume:PhysicalObject ;
+                      <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a15cea10_9946_4d2b_95c5_cfc333fd2abb> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#PhysicalPhenomenon
-:PhysicalPhenomenon rdf:type owl:Class ;
-                    rdfs:subClassOf :PhysicalEntity ;
-                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_5cc4e111_3eb1_44a3_9369_5af3846cf605> .
+###  https://w3id.org/emmo/hume#PhysicalPhenomenon
+hume:PhysicalPhenomenon rdf:type owl:Class ;
+                        rdfs:subClassOf hume:PhysicalEntity ;
+                        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_5cc4e111_3eb1_44a3_9369_5af3846cf605> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Plasma
-:Plasma rdf:type owl:Class ;
-        rdfs:subClassOf :Fluid ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4c21fb86_fdcf_444e_b498_86fe656295af> .
+###  https://w3id.org/emmo/hume#Plasma
+hume:Plasma rdf:type owl:Class ;
+            rdfs:subClassOf hume:Fluid ;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4c21fb86_fdcf_444e_b498_86fe656295af> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Process
-:Process rdf:type owl:Class ;
-         rdfs:subClassOf :Persistence ;
-         <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_43e9a05d_98af_41b4_92f6_00f79a09bfce> .
+###  https://w3id.org/emmo/hume#Process
+hume:Process rdf:type owl:Class ;
+             rdfs:subClassOf hume:Persistence ;
+             <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_43e9a05d_98af_41b4_92f6_00f79a09bfce> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Property
-:Property rdf:type owl:Class ;
-          rdfs:subClassOf :Sign ;
-          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba> .
+###  https://w3id.org/emmo/hume#Property
+hume:Property rdf:type owl:Class ;
+              rdfs:subClassOf hume:Sign ;
+              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b7bcff25_ffc3_474e_9ab5_01b1664bd4ba> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Referent
-:Referent rdf:type owl:Class ;
-          rdfs:subClassOf :Semiotics .
+###  https://w3id.org/emmo/hume#Referent
+hume:Referent rdf:type owl:Class ;
+              rdfs:subClassOf hume:Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Role
-:Role rdf:type owl:Class ;
-      rdfs:subClassOf :Holistic ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
+###  https://w3id.org/emmo/hume#Role
+hume:Role rdf:type owl:Class ;
+          rdfs:subClassOf hume:Holistic ;
+          <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4f226cf3_6d02_4d35_8566_a9e641bc6ff3> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Sample
-:Sample rdf:type owl:Class ;
-        rdfs:subClassOf :Referent .
+###  https://w3id.org/emmo/hume#Sample
+hume:Sample rdf:type owl:Class ;
+            rdfs:subClassOf hume:Referent .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Semiosis
-:Semiosis rdf:type owl:Class ;
-          rdfs:subClassOf :Process ,
-                          :Semiotics .
+###  https://w3id.org/emmo/hume#Semiosis
+hume:Semiosis rdf:type owl:Class ;
+              rdfs:subClassOf hume:Process ,
+                              hume:Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Semiotics
-:Semiotics rdf:type owl:Class ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
+###  https://w3id.org/emmo/hume#Semiotics
+hume:Semiotics rdf:type owl:Class ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_8bb6b688_812a_4cb9_b76c_d5a058928719> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Sign
-:Sign rdf:type owl:Class ;
-      rdfs:subClassOf :Semiotics .
+###  https://w3id.org/emmo/hume#Sign
+hume:Sign rdf:type owl:Class ;
+          rdfs:subClassOf hume:Semiotics .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Solid
-:Solid rdf:type owl:Class ;
-       rdfs:subClassOf :CondensedMatter ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
+###  https://w3id.org/emmo/hume#Solid
+hume:Solid rdf:type owl:Class ;
+           rdfs:subClassOf hume:CondensedMatter ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_a2b006f2_bbfd_4dba_bcaa_3fca20cd6be1> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#StateOfMatter
-:StateOfMatter rdf:type owl:Class ;
-               rdfs:subClassOf :ContinuumSubstance ;
-               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
+###  https://w3id.org/emmo/hume#StateOfMatter
+hume:StateOfMatter rdf:type owl:Class ;
+                   rdfs:subClassOf hume:ContinuumSubstance ;
+                   <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b9695e87_8261_412e_83cd_a86459426a28> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Substance
-:Substance rdf:type owl:Class ;
-           rdfs:subClassOf :PhysicalObject ;
-           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_bc37743c_37c4_4ec7_9d58_d1aae5567352> .
+###  https://w3id.org/emmo/hume#Substance
+hume:Substance rdf:type owl:Class ;
+               rdfs:subClassOf hume:PhysicalObject ;
+               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_bc37743c_37c4_4ec7_9d58_d1aae5567352> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Suspension
-:Suspension rdf:type owl:Class ;
-            rdfs:subClassOf :StateOfMatter ;
-            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4a464c8d_8895_44a8_a628_aed13509f1bd> .
+###  https://w3id.org/emmo/hume#Suspension
+hume:Suspension rdf:type owl:Class ;
+                rdfs:subClassOf hume:StateOfMatter ;
+                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_4a464c8d_8895_44a8_a628_aed13509f1bd> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#System
-:System rdf:type owl:Class ;
-        rdfs:subClassOf :Object ,
-                        :Whole ;
-        <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_65a007dc_2550_46b0_b394_3346c67fbb69> .
+###  https://w3id.org/emmo/hume#System
+hume:System rdf:type owl:Class ;
+            rdfs:subClassOf hume:Object ,
+                            hume:Whole ;
+            <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_65a007dc_2550_46b0_b394_3346c67fbb69> .
 
 
-###  https://w3id.org/emmo/emmo-for-humans#Whole
-:Whole rdf:type owl:Class ;
-       rdfs:subClassOf :Holistic ;
-       <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_1efe8b96_e006_4a33_bc9a_421406cbb9f0> .
+###  https://w3id.org/emmo/hume#Whole
+hume:Whole rdf:type owl:Class ;
+           rdfs:subClassOf hume:Holistic ;
+           <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_1efe8b96_e006_4a33_bc9a_421406cbb9f0> .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
