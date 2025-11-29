@@ -83,8 +83,6 @@ AnnotationProperty"""@en ;
 hume:affects rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf hume:properOverlaps ;
              owl:inverseOf hume:isAffectedBy ;
-             rdf:type owl:AsymmetricProperty ,
-                      owl:IrreflexiveProperty ;
              rdfs:domain hume:Process ;
              rdfs:range hume:Object .
 
@@ -101,8 +99,6 @@ hume:coexistsWith rdf:type owl:ObjectProperty ;
 hume:contributesTo rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf hume:properOverlaps ;
                    owl:inverseOf hume:isContributedBy ;
-                   rdf:type owl:AsymmetricProperty ,
-                            owl:IrreflexiveProperty ;
                    rdfs:domain hume:Process ;
                    rdfs:range hume:Process .
 
@@ -161,8 +157,6 @@ hume:hasDescription rdf:type owl:ObjectProperty ;
 hume:hasInput rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf hume:properOverlaps ;
               owl:inverseOf hume:isInputOf ;
-              rdf:type owl:AsymmetricProperty ,
-                       owl:IrreflexiveProperty ;
               rdfs:domain hume:Process .
 
 
@@ -178,8 +172,6 @@ hume:hasInterpreter rdf:type owl:ObjectProperty ;
 hume:hasOutput rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf hume:properOverlaps ;
                owl:inverseOf hume:isOutputOf ;
-               rdf:type owl:AsymmetricProperty ,
-                        owl:IrreflexiveProperty ;
                rdfs:domain hume:Process .
 
 
@@ -203,7 +195,6 @@ hume:hasProperPart rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf hume:hasPart ,
                                       hume:overcrosses ;
                    owl:inverseOf hume:isProperPartOf ;
-                   rdf:type owl:AsymmetricProperty ;
                    <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_9380ab64_0363_4804_b13f_3a8a94119a76> .
 
 
@@ -275,23 +266,19 @@ hume:interprets rdf:type owl:ObjectProperty ;
 
 ###  https://w3id.org/emmo/hume#isAffectedBy
 hume:isAffectedBy rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf hume:properOverlaps ;
-                  rdf:type owl:AsymmetricProperty ,
-                           owl:IrreflexiveProperty .
+                  rdfs:subPropertyOf hume:properOverlaps .
 
 
 ###  https://w3id.org/emmo/hume#isAfter
 hume:isAfter rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf hume:isCausedBy ;
              owl:inverseOf hume:isBefore ;
-             rdf:type owl:AsymmetricProperty ;
              <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_2a28c0dd_89b1_47ac_b81f_fccc56f39617> .
 
 
 ###  https://w3id.org/emmo/hume#isBefore
 hume:isBefore rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf hume:isCauseOf ;
-              rdf:type owl:AsymmetricProperty ;
               <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_ebc9e62c_5dc4_44db_9060_7923740bdf78> .
 
 
@@ -306,14 +293,12 @@ hume:isBehaviourOf rdf:type owl:ObjectProperty ;
 hume:isCauseOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf owl:topObjectProperty ;
                owl:inverseOf hume:isCausedBy ;
-               rdf:type owl:IrreflexiveProperty ;
                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_d67ee67e_4fac_4676_82c9_aec361dba698> .
 
 
 ###  https://w3id.org/emmo/hume#isCausedBy
 hume:isCausedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdf:type owl:IrreflexiveProperty ;
                 <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_6735d3ff_67f8_43b5_b5b0_240fbfab4517> .
 
 
@@ -340,9 +325,7 @@ hume:isConstitutiveProcessOf rdf:type owl:ObjectProperty ;
 
 ###  https://w3id.org/emmo/hume#isContributedBy
 hume:isContributedBy rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf hume:properOverlaps ;
-                     rdf:type owl:AsymmetricProperty ,
-                              owl:IrreflexiveProperty .
+                     rdfs:subPropertyOf hume:properOverlaps .
 
 
 ###  https://w3id.org/emmo/hume#isDatumOf
@@ -361,8 +344,6 @@ hume:isDescriptionOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#isInputOf
 hume:isInputOf rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf hume:properOverlaps ;
-               rdf:type owl:AsymmetricProperty ,
-                        owl:IrreflexiveProperty ;
                rdfs:range hume:Process .
 
 
@@ -393,24 +374,18 @@ hume:isInterpreterFor rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#isJoinedBy
 hume:isJoinedBy rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf hume:properOverlaps ;
-                owl:inverseOf hume:joins ;
-                rdf:type owl:AsymmetricProperty ,
-                         owl:IrreflexiveProperty .
+                owl:inverseOf hume:joins .
 
 
 ###  https://w3id.org/emmo/hume#isLeftBy
 hume:isLeftBy rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf hume:properOverlaps ;
-              owl:inverseOf hume:leaves ;
-              rdf:type owl:AsymmetricProperty ,
-                       owl:IrreflexiveProperty .
+              owl:inverseOf hume:leaves .
 
 
 ###  https://w3id.org/emmo/hume#isOutputOf
 hume:isOutputOf rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf hume:properOverlaps ;
-                rdf:type owl:AsymmetricProperty ,
-                         owl:IrreflexiveProperty ;
                 rdfs:range hume:Process .
 
 
@@ -430,9 +405,7 @@ hume:isPartOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#isPartakenBy
 hume:isPartakenBy rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf hume:properOverlaps ;
-                  owl:inverseOf hume:partakesIn ;
-                  rdf:type owl:AsymmetricProperty ,
-                           owl:IrreflexiveProperty .
+                  owl:inverseOf hume:partakesIn .
 
 
 ###  https://w3id.org/emmo/hume#isParticipantOf
@@ -445,16 +418,13 @@ hume:isParticipantOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#isParticipatedBy
 hume:isParticipatedBy rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf hume:properOverlaps ;
-                      owl:inverseOf hume:participatesTo ;
-                      rdf:type owl:AsymmetricProperty ,
-                               owl:IrreflexiveProperty .
+                      owl:inverseOf hume:participatesTo .
 
 
 ###  https://w3id.org/emmo/hume#isProperPartOf
 hume:isProperPartOf rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf hume:isOvercrossedBy ,
                                        hume:isPartOf ;
-                    rdf:type owl:AsymmetricProperty ;
                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_559ab98c_1c7d_4794_996c_8c1d8d56381c> .
 
 
@@ -527,16 +497,12 @@ hume:isSubProcessOf rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#joins
 hume:joins rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf hume:properOverlaps ;
-           rdf:type owl:AsymmetricProperty ,
-                    owl:IrreflexiveProperty ;
            rdfs:range hume:Object .
 
 
 ###  https://w3id.org/emmo/hume#leaves
 hume:leaves rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf hume:properOverlaps ;
-            rdf:type owl:AsymmetricProperty ,
-                     owl:IrreflexiveProperty ;
             rdfs:range hume:Object .
 
 
@@ -556,8 +522,6 @@ hume:overlaps rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#partakesIn
 hume:partakesIn rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf hume:properOverlaps ;
-                rdf:type owl:AsymmetricProperty ,
-                         owl:IrreflexiveProperty ;
                 rdfs:domain hume:Object ;
                 rdfs:range hume:Object .
 
@@ -565,8 +529,6 @@ hume:partakesIn rdf:type owl:ObjectProperty ;
 ###  https://w3id.org/emmo/hume#participatesTo
 hume:participatesTo rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf hume:properOverlaps ;
-                    rdf:type owl:AsymmetricProperty ,
-                             owl:IrreflexiveProperty ;
                     rdfs:domain hume:Object ;
                     rdfs:range hume:Process .
 
@@ -575,8 +537,7 @@ hume:participatesTo rdf:type owl:ObjectProperty ;
 hume:properOverlaps rdf:type owl:ObjectProperty ;
                     rdfs:subPropertyOf hume:isOvercrossedBy ,
                                        hume:overcrosses ;
-                    rdf:type owl:SymmetricProperty ,
-                             owl:IrreflexiveProperty ;
+                    rdf:type owl:SymmetricProperty ;
                     <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_b3c8ba10_6bee_45e7_9416_e9019aa9f023> .
 
 
@@ -665,11 +626,7 @@ hume:Characterisation rdf:type owl:Class ;
 ###  https://w3id.org/emmo/hume#Component
 hume:Component rdf:type owl:Class ;
                rdfs:subClassOf hume:Object ,
-                               hume:Role ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty hume:isConstituentOf ;
-                                 owl:someValuesFrom hume:System
-                               ] ;
+                               hume:Role ;
                <http://www.w3.org/2004/02/skos/core#exactMatch> <https://w3id.org/emmo#EMMO_f76884f7_964e_488e_9bb7_1b2453e9e817> .
 
 
