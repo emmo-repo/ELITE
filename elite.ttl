@@ -32,12 +32,11 @@ owl:sameAs
 inverseOf
 TransitiveProperty
 SymmetricProperty
-AsymmetricProperty
-IrreflexiveProperty
 FunctionalProperty
 InverseFunctionalProperty
 ObjectProperty
-DatatypeProperty"""@en ;
+DatatypeProperty
+AnnotationProperty"""@en ;
                                owl:versionInfo "0.0.6"@en .
 
 #################################################################
